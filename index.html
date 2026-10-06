@@ -1,0 +1,129 @@
+<!doctype html><html lang="ro"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10131e"><title>Deutsch Studio • Fritz</title><style>*{box-sizing:border-box}body{margin:0;background:#0b0e17;color:#eef1ff;font:16px system-ui}header{padding:25px 6%;border-bottom:1px solid #293045;display:flex;justify-content:space-between;align-items:center;gap:12px}b.logo{font-size:24px;color:#c0ff68}select,input,button{font:inherit;border:1px solid #37405c;background:#181e30;color:inherit;border-radius:12px;padding:12px}button{cursor:pointer}button:hover{border-color:#b9f96c}button:disabled{opacity:.5}main{max-width:1100px;margin:auto;padding:28px}nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 30px}.active,.primary{background:#c0ff68;color:#101718}h1{font-size:clamp(32px,6vw,64px);letter-spacing:-2px;margin:18px 0}h2{font-size:28px}.muted{color:#a4acc3}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{background:linear-gradient(140deg,#1d2437,#131827);padding:25px;border:1px solid #303852;border-radius:22px;margin-bottom:15px}.big{font-size:48px;margin:24px 0}.tag{color:#c0ff68;font-size:13px;text-transform:uppercase;letter-spacing:2px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.progress{background:#313a51;height:9px;border-radius:8px;overflow:hidden}.progress div{height:100%;background:#c0ff68}#feedback{padding:15px;color:#c0ff68;min-height:52px}.word{font-size:25px}.good{border-color:#c0ff68}.bad{border-color:#ff8080}footer{padding:30px;color:#78849e;text-align:center}label{display:block;margin:12px 0}a{color:#c0ff68}details{margin:12px 0}summary{cursor:pointer;font-size:20px}small{color:#a4acc3}button:focus-visible,input:focus-visible{outline:3px solid #c0ff68}</style><header><b class="logo">D / Deutsch Studio</b><select id="lang" aria-label="Limba traducerii"><option value="ro">Deutsch → Română</option><option value="en">Deutsch → English</option><option value="es">Deutsch → Español</option><option value="it">Deutsch → Italiano</option></select></header><main><span class="tag">Fritz edition · Learn a little. Every day.</span><nav id="nav"></nav><section id="app"></section></main><footer>Progres salvat pe acest browser · Pronunție prin vocea germană a dispozitivului · Fără cont sau reclame</footer><script>
+const raw=`Hallo|Salut|Hello|Hola|Ciao
+Guten Morgen|Bună dimineața|Good morning|Buenos días|Buongiorno
+Guten Abend|Bună seara|Good evening|Buenas tardes|Buonasera
+Gute Nacht|Noapte bună|Good night|Buenas noches|Buonanotte
+Auf Wiedersehen|La revedere|Goodbye|Adiós|Arrivederci
+Danke|Mulțumesc|Thank you|Gracias|Grazie
+Bitte|Te rog / Cu plăcere|Please / You're welcome|Por favor / De nada|Per favore / Prego
+Entschuldigung|Scuze|Excuse me|Perdón|Scusi
+ja|da|yes|sí|sì
+nein|nu|no|no|no
+vielleicht|poate|perhaps|quizás|forse
+heute|astăzi|today|hoy|oggi
+morgen|mâine|tomorrow|mañana|domani
+gestern|ieri|yesterday|ayer|ieri
+jetzt|acum|now|ahora|adesso
+immer|mereu|always|siempre|sempre
+nie|niciodată|never|nunca|mai
+oft|des|often|a menudo|spesso
+hier|aici|here|aquí|qui
+dort|acolo|there|allí|lì
+der Mann|bărbatul|man|hombre|uomo
+die Frau|femeia|woman|mujer|donna
+das Kind|copilul|child|niño|bambino
+die Familie|familia|family|familia|famiglia
+der Vater|tatăl|father|padre|padre
+die Mutter|mama|mother|madre|madre
+der Bruder|fratele|brother|hermano|fratello
+die Schwester|sora|sister|hermana|sorella
+der Freund|prietenul|friend|amigo|amico
+der Name|numele|name|nombre|nome
+das Haus|casa|house|casa|casa
+die Wohnung|apartamentul|apartment|apartamento|appartamento
+das Zimmer|camera|room|habitación|stanza
+die Küche|bucătăria|kitchen|cocina|cucina
+das Bad|baia|bathroom|baño|bagno
+die Tür|ușa|door|puerta|porta
+das Fenster|fereastra|window|ventana|finestra
+der Tisch|masa|table|mesa|tavolo
+der Stuhl|scaunul|chair|silla|sedia
+das Bett|patul|bed|cama|letto
+das Wasser|apa|water|agua|acqua
+das Brot|pâinea|bread|pan|pane
+die Milch|laptele|milk|leche|latte
+der Käse|brânza|cheese|queso|formaggio
+das Ei|oul|egg|huevo|uovo
+der Apfel|mărul|apple|manzana|mela
+die Kartoffel|cartoful|potato|patata|patata
+das Gemüse|legumele|vegetables|verduras|verdura
+das Obst|fructele|fruit|fruta|frutta
+der Kaffee|cafeaua|coffee|café|caffè
+der Tee|ceaiul|tea|té|tè
+das Bier|berea|beer|cerveza|birra
+die Rechnung|nota de plată|bill|cuenta|conto
+das Frühstück|micul dejun|breakfast|desayuno|colazione
+das Abendessen|cina|dinner|cena|cena
+der Bahnhof|gara|train station|estación de tren|stazione ferroviaria
+der Zug|trenul|train|tren|treno
+der Bus|autobuzul|bus|autobús|autobus
+das Auto|mașina|car|coche|automobile
+das Fahrrad|bicicleta|bicycle|bicicleta|bicicletta
+die Straße|strada|street|calle|strada
+die Fahrkarte|biletul de călătorie|ticket|billete|biglietto
+der Flughafen|aeroportul|airport|aeropuerto|aeroporto
+die Reise|călătoria|journey|viaje|viaggio
+der Urlaub|concediul|holiday|vacaciones|vacanza
+die Arbeit|munca|work|trabajo|lavoro
+der Beruf|profesia|profession|profesión|professione
+das Büro|biroul|office|oficina|ufficio
+das Geld|banii|money|dinero|denaro
+die Zeit|timpul|time|tiempo|tempo
+der Termin|programarea|appointment|cita|appuntamento
+der Arzt|medicul|doctor|médico|medico
+die Apotheke|farmacia|pharmacy|farmacia|farmacia
+das Krankenhaus|spitalul|hospital|hospital|ospedale
+der Schmerz|durerea|pain|dolor|dolore
+sein|a fi|to be|ser / estar|essere
+haben|a avea|to have|tener|avere
+gehen|a merge|to go|ir|andare
+kommen|a veni|to come|venir|venire
+wohnen|a locui|to live|vivir|abitare
+sprechen|a vorbi|to speak|hablar|parlare
+lernen|a învăța|to learn|aprender|imparare
+arbeiten|a munci|to work|trabajar|lavorare
+essen|a mânca|to eat|comer|mangiare
+trinken|a bea|to drink|beber|bere
+kaufen|a cumpăra|to buy|comprar|comprare
+bezahlen|a plăti|to pay|pagar|pagare
+suchen|a căuta|to search|buscar|cercare
+finden|a găsi|to find|encontrar|trovare
+brauchen|a avea nevoie|to need|necesitar|avere bisogno
+verstehen|a înțelege|to understand|entender|capire
+helfen|a ajuta|to help|ayudar|aiutare
+lesen|a citi|to read|leer|leggere
+schreiben|a scrie|to write|escribir|scrivere
+schlafen|a dormi|to sleep|dormir|dormire
+gut|bun|good|bueno|buono
+schlecht|rău|bad|malo|cattivo
+groß|mare|big|grande|grande
+klein|mic|small|pequeño|piccolo
+teuer|scump|expensive|caro|caro
+billig|ieftin|cheap|barato|economico
+warm|cald|warm|cálido|caldo
+kalt|rece|cold|frío|freddo
+schnell|rapid|fast|rápido|veloce
+langsam|lent|slow|lento|lento
+neu|nou|new|nuevo|nuovo
+alt|vechi / bătrân|old|viejo|vecchio
+müde|obosit|tired|cansado|stanco
+krank|bolnav|ill|enfermo|malato
+links|stânga|left|izquierda|sinistra
+rechts|dreapta|right|derecha|destra
+Wie heißen Sie?|Cum vă numiți?|What is your name?|¿Cómo se llama?|Come si chiama?
+Ich heiße Fritz.|Mă numesc Fritz.|My name is Fritz.|Me llamo Fritz.|Mi chiamo Fritz.
+Ich komme aus Rumänien.|Sunt din România.|I come from Romania.|Soy de Rumanía.|Vengo dalla Romania.
+Ich lerne Deutsch.|Învăț germană.|I am learning German.|Estoy aprendiendo alemán.|Sto imparando il tedesco.
+Ich verstehe nicht.|Nu înțeleg.|I do not understand.|No entiendo.|Non capisco.
+Können Sie das wiederholen?|Puteți repeta?|Can you repeat that?|¿Puede repetirlo?|Può ripeterlo?
+Wie viel kostet das?|Cât costă?|How much does it cost?|¿Cuánto cuesta?|Quanto costa?
+Ich hätte gern einen Kaffee.|Aș dori o cafea.|I would like a coffee.|Quisiera un café.|Vorrei un caffè.
+Wo ist der Bahnhof?|Unde este gara?|Where is the station?|¿Dónde está la estación?|Dov'è la stazione?
+Ich brauche Hilfe.|Am nevoie de ajutor.|I need help.|Necesito ayuda.|Ho bisogno di aiuto.`;
+const words=raw.split('\n').map((x,id)=>{let a=x.split('|');return{id,de:a[0],ro:a[1],en:a[2],es:a[3],it:a[4]}});let state;try{state=JSON.parse(localStorage.getItem('deutschStudio'))}catch{}state=state||{xp:0,cards:{},days:{},goal:10,lang:'ro',lessons:[]};let lang=state.lang||'ro',tab='Acasă',current=null,revealed=false,mode='choice',score=0,round=0,answered=false;const app=document.getElementById('app'),$=x=>document.getElementById(x),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),today=()=>new Date().toLocaleDateString('sv-SE');function save(){localStorage.setItem('deutschStudio',JSON.stringify(state))}function award(n){state.xp+=n;state.days[today()]=(state.days[today()]||0)+1;save()}function speak(text){if(!('speechSynthesis'in window)){alert('Browserul nu oferă pronunție.');return}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=.82;speechSynthesis.speak(u)}function sound(id){speak(words[id].de)}const topics=[['Saluturi & timp',0,20],['Familie',20,30],['Acasă',30,40],['Mâncare & restaurant',40,55],['Transport',55,65],['Muncă & sănătate',65,75],['Verbe esențiale',75,95],['Adjective & direcții',95,111],['Conversație',111,131]];function pool(){let t=$('topic')?.value;return t&&t!=='all'?words.slice(topics[t][1],topics[t][2]):words}function picker(){return '<select id="topic"><option value="all">Toate temele</option>'+topics.map((t,i)=>`<option value="${i}">${t[0]}</option>`).join('')+'</select>'}function navigate(t){tab=t;render()}function render(){document.getElementById('nav').innerHTML=['Acasă','Vocabular','Flashcards','Quiz','Lecții','Progres'].map(t=>`<button class="${tab===t?'active':''}" onclick="navigate('${t}')">${t}</button>`).join('');if(tab==='Acasă'){let done=state.days[today()]||0;app.innerHTML=`<h1>De la primul cuvânt<br>la prima conversație<span style="color:#c0ff68">.</span></h1><p class="muted">Germană practică A1–A2. Explicații în română, traduceri în patru limbi.</p><div class="grid"><div class="card"><span class="tag">Ritmul tău</span><h2>${done} / ${state.goal}</h2><p>Exerciții astăzi</p><div class="progress"><div style="width:${Math.min(100,done/state.goal*100)}%"></div></div></div><div class="card"><span class="tag">Experiență</span><h2>${state.xp} XP</h2><p>${Object.keys(state.cards).length} cuvinte exersate</p></div><div class="card"><span class="tag">Bibliotecă</span><h2>${words.length}</h2><p>Cuvinte și expresii · RO / EN / ES / IT</p></div></div><button class="primary" onclick="navigate('Flashcards')">Începe sesiunea →</button><h2>Alege o temă</h2><div class="grid">${topics.map(t=>`<div class="card"><h3>${t[0]}</h3><p class="muted">Vocabular + pronunție</p><button onclick="navigate('Vocabular')">Explorează →</button></div>`).join('')}</div>`}if(tab==='Vocabular'){app.innerHTML='<h1>Cuvinte care rămân.</h1><div class="row"><input id="search" placeholder="Caută în germană sau traducere" aria-label="Caută">'+picker()+'</div><p class="muted">Învață substantivele împreună cu articolul.</p><div id="list" class="grid"></div>';$('search').oninput=list;$('topic').onchange=list;list()}if(tab==='Flashcards'){app.innerHTML='<h1>Repetă. Reține.</h1><p class="muted">Repetiție spațiată: cuvintele dificile revin mai repede.</p>'+picker()+'<div id="flash"></div>';$('topic').onchange=nextCard;nextCard()}if(tab==='Quiz'){score=0;round=0;app.innerHTML='<h1>Testează-ți germana.</h1><div class="row">'+picker()+'<select id="mode"><option value="choice">Alege traducerea</option><option value="type">Scrie în germană</option><option value="listen">Ascultă și alege</option></select></div><div id="question"></div>';$('mode').onchange=()=>{mode=$('mode').value;nextQuestion()};$('topic').onchange=nextQuestion;nextQuestion()}if(tab==='Lecții')lessons();if(tab==='Progres')progress()}
+function list(){let q=$('search').value.toLocaleLowerCase();$('list').innerHTML=pool().filter(w=>(w.de+' '+w[lang]).toLocaleLowerCase().includes(q)).map(w=>`<div class="card"><div class="word">${esc(w.de)}</div><p class="muted">${esc(w[lang])}</p><button onclick="sound(${w.id})" aria-label="Ascultă ${esc(w.de)}">▶ Ascultă</button></div>`).join('')||'<p>Niciun rezultat.</p>'}
+function nextCard(){let p=pool(),due=p.filter(w=>!state.cards[w.id]||state.cards[w.id].due<=Date.now());revealed=false;if(!due.length){$('flash').innerHTML='<div class="card"><h2>Toate repetările sunt la zi!</h2><button onclick="current=pool()[Math.floor(Math.random()*pool().length)];showCard()">Exersează suplimentar</button></div>';return}current=due[Math.floor(Math.random()*due.length)];showCard()}function showCard(){$('flash').innerHTML=`<div class="card" style="margin-top:20px;text-align:center"><span class="tag">GERMANĂ → ${lang.toUpperCase()}</span><div class="big">${esc(current.de)}</div><button onclick="sound(${current.id})">▶ Pronunție</button><h2>${revealed?esc(current[lang]):'•••'}</h2>${revealed?'<div class="row" style="justify-content:center"><button onclick="rate(0)">Încă o dată</button><button onclick="rate(1)">Greu</button><button class="primary" onclick="rate(2)">Știu bine ✓</button></div>':'<button class="primary" onclick="revealed=true;showCard()">Arată traducerea</button>'}</div>`}function rate(n){let old=state.cards[current.id]||{interval:0};let interval=n===0?0:n===1?1:Math.max(2,(old.interval||1)*2);state.cards[current.id]={interval,due:Date.now()+(n===0?60000:interval*86400000)};award(n===0?2:10);nextCard()}
+function nextQuestion(){answered=false;let p=pool();current=p[Math.floor(Math.random()*p.length)];let opts=[current,...words.filter(w=>w.id!==current.id).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);$('question').innerHTML=`<div class="card" style="margin-top:20px"><span class="tag">${score} CORECTE / ${round} RĂSPUNSURI</span><h2>${mode==='type'?esc(current[lang]):mode==='listen'?'Ce ai auzit?':esc(current.de)}</h2>${mode==='listen'?`<button onclick="sound(${current.id})">▶ Ascultă din nou</button>`:''}${mode==='type'?'<form id="answerForm"><input id="typed" autocomplete="off" placeholder="Răspunsul în germană" aria-label="Răspuns în germană"><button class="primary">Verifică</button></form>':'<div class="grid">'+opts.map(w=>`<button class="option" onclick="check(${w.id}===current.id)">${esc(w[lang])}</button>`).join('')+'</div>'}<div id="feedback" aria-live="polite"></div><button id="next" hidden onclick="nextQuestion()">Următoarea →</button></div>`;if(mode==='listen')sound(current.id);if(mode==='type')$('answerForm').onsubmit=e=>{e.preventDefault();const norm=s=>s.trim().toLocaleLowerCase().replace(/[.!?]$/,'').replace(/\s+/g,' ');check(norm($('typed').value)===norm(current.de))}}function check(ok){if(answered)return;answered=true;round++;if(ok){score++;award(10)}else award(1);$('feedback').textContent=ok?'Corect! +10 XP':'Răspuns: '+current.de+' — '+current[lang];document.querySelectorAll('.option').forEach(b=>b.disabled=true);$('next').hidden=false}
+const grammar=[['A1 · Sein și haben','Cele două verbe de bază sunt neregulate.','ich bin · du bist · er/sie/es ist · wir sind · ihr seid · sie/Sie sind','ich habe · du hast · er/sie/es hat · wir haben · ihr habt · sie/Sie haben','Ich bin müde. — Sunt obosit. / I am tired. / Estoy cansado. / Sono stanco.'],['A1 · Articolele','Învață substantivul cu articol: der (masculin), die (feminin), das (neutru). Pluralul are articolul die.','der Mann → die Männer; die Frau → die Frauen; das Kind → die Kinder','ein Mann · eine Frau · ein Kind. La plural nu există articol nehotărât ein.','Das ist ein Haus. — Aceasta este o casă.'],['A1 · Ordinea cuvintelor','În propoziția enunțiativă verbul conjugat este pe poziția a doua. Poziție înseamnă constituent, nu al doilea cuvânt.','Ich lerne heute Deutsch. / Heute lerne ich Deutsch.','Întrebare da/nu: Lernst du Deutsch? Întrebare cu cuvânt interogativ: Wo wohnst du?','Wo wohnen Sie? — Unde locuiți?'],['A1 · Acuzativ','Obiectul direct apare frecvent în acuzativ. Articolul masculin se schimbă: der → den; ein → einen.','Ich sehe den Mann. Ich kaufe einen Apfel.','die și das nu se schimbă în acuzativ: Ich sehe die Frau / das Kind.','Ich hätte gern einen Kaffee. — Aș dori o cafea.'],['A1 · Negația','Kein neagă un substantiv cu articol nehotărât sau fără articol. Nicht neagă verbul, adjectivul sau alt element.','Ich habe kein Auto. / Das ist nicht teuer.','kein Mann · keine Frau · kein Kind; acuzativ masculin: keinen Mann','Ich verstehe nicht. — Nu înțeleg.'],['A1 · Verbe modale','Modalul este conjugat, iar verbul principal stă la infinitiv la final.','Ich kann Deutsch sprechen. / Du musst heute arbeiten.','können = a putea; müssen = a trebui; dürfen = a avea voie; wollen = a vrea; sollen = a trebui (recomandare/cerință)','Kannst du mir helfen? — Poți să mă ajuți?'],['A2 · Dativ','Dativul marchează adesea destinatarul. Articole: der/das → dem; die → der; plural → den.','Ich helfe dem Mann. / Ich gebe der Frau das Buch.','Prepoziții cu dativ: mit, nach, bei, seit, von, zu, aus.','Ich fahre mit dem Zug. — Merg cu trenul.'],['A2 · Perfekt','În conversație trecutul se exprimă frecvent cu haben/sein + participiu.','Ich habe Deutsch gelernt. / Ich bin nach Hause gegangen.','Multe verbe de mișcare cu schimbare de loc și de schimbare de stare folosesc sein. Participiile neregulate se învață individual.','Ich habe einen Kaffee getrunken. — Am băut o cafea.'],['A2 · Verbe separabile','Prefixul unui verb separabil merge la final în propoziția principală la prezent.','aufstehen → Ich stehe um sieben Uhr auf.','Cu modal: Ich muss früh aufstehen. La Perfekt: Ich bin früh aufgestanden.','einkaufen → Ich kaufe heute ein. — Fac cumpărături astăzi.'],['A2 · Weil și dass','În subordonatele introduse prin weil sau dass verbul conjugat stă la final.','Ich lerne Deutsch, weil ich in Deutschland wohne.','Ich glaube, dass er heute kommt. Nu uita virgula înaintea subordonatei.','weil = deoarece; dass = că.']];function lessons(){app.innerHTML='<h1>Înțelege regulile.</h1><p class="muted">10 lecții introductive A1–A2 · explicații în română. Nu reprezintă un curs CEFR complet.</p>'+grammar.map((g,i)=>`<details class="card"><summary>${esc(g[0])} ${state.lessons.includes(i)?'✓':''}</summary>${g.slice(1).map(x=>'<p>'+esc(x)+'</p>').join('')}<button onclick="completeLesson(${i})">Marchează parcursă ✓</button></details>`).join('')}function completeLesson(i){if(!state.lessons.includes(i)){state.lessons.push(i);award(20)}lessons()}
+function progress(){app.innerHTML=`<h1>Fiecare zi contează.</h1><div class="grid"><div class="card"><h2>${state.xp} XP</h2>Experiență totală</div><div class="card"><h2>${Object.keys(state.days).length}</h2>Zile active</div><div class="card"><h2>${state.lessons.length} / 10</h2>Lecții parcurse</div></div><div class="card"><h2>Ultimele 7 zile</h2>${Array.from({length:7},(_,i)=>{let d=new Date();d.setDate(d.getDate()-6+i);let k=d.toLocaleDateString('sv-SE');return `<p>${k}: ${state.days[k]||0} exerciții</p>`}).join('')}</div><div class="card"><h2>Setări & backup</h2><label>Obiectiv zilnic <input type="number" min="1" max="200" value="${state.goal}" onchange="state.goal=Math.max(1,Math.min(200,Number(this.value)||10));save()"></label><p class="muted">Progresul este local acestui browser și acestei adrese web. Exportă-l înainte de a schimba dispozitivul sau linkul.</p><button onclick="exportData()">Exportă progresul</button><label>Importă backup JSON <input type="file" accept="application/json" id="import"></label><p id="importStatus" aria-live="polite"></p></div>`;$('import').onchange=async e=>{try{let s=JSON.parse(await e.target.files[0].text());if(!Number.isFinite(s.xp)||s.xp<0||!s.cards||typeof s.cards!=='object'||!s.days||!Array.isArray(s.lessons)||!['ro','en','es','it'].includes(s.lang)||!Number.isFinite(s.goal)||s.goal<1)throw Error('Format invalid');state=s;lang=s.lang;save();$('lang').value=lang;progress();$('importStatus').textContent='Backup importat.'}catch(err){$('importStatus').textContent='Import nereușit: fișier invalid.'}}}function exportData(){let a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));a.href=u;a.download='deutsch-studio-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}$('lang').value=lang;$('lang').onchange=e=>{lang=e.target.value;state.lang=lang;save();render()};render();
+</script></html>
